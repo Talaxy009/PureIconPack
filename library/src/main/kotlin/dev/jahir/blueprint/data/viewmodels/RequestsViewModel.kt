@@ -19,7 +19,7 @@ import dev.jahir.blueprint.data.requests.SendIconRequest
 import dev.jahir.blueprint.extensions.InstalledAppsComparator
 import dev.jahir.blueprint.extensions.blueprintFormat
 import dev.jahir.blueprint.extensions.clean
-import dev.jahir.blueprint.extensions.drawableRes
+import dev.jahir.blueprint.extensions.drawableOrMipmapRes
 import dev.jahir.blueprint.extensions.getLocalizedName
 import dev.jahir.frames.extensions.context.getAppName
 import dev.jahir.frames.extensions.context.integer
@@ -70,7 +70,7 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
                     && !actualComponent.endsWith("/")) {
                     if (debug) {
                         if (drawable.hasContent()) {
-                            val res = context.drawableRes(drawable)
+                            val res = context.drawableOrMipmapRes(drawable)
                             if (res == 0)
                                 Log.w(
                                     context.getAppName(),
@@ -148,7 +148,7 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
 
             val packagesList = try {
                 context.packageManager.queryIntentActivities(
-                    Intent("android.intent.action.MAIN").addCategory("android.intent.category.LAUNCHER"),
+                    Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER),
                     PackageManager.GET_RESOLVED_FILTER
                 )
             } catch (e: Exception) {
