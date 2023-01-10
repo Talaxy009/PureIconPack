@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <foreground android:drawable="@drawable/tsp" />
     <background android:drawable="@drawable/ahn_lab_v_3_mobile_plus_2_0"  />
 </adaptive-icon>
